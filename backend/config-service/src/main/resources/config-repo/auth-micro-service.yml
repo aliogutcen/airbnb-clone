@@ -1,0 +1,44 @@
+server:
+  port: 8080
+spring:
+  graphql:
+    schema:
+      printer:
+        enabled: true
+    graphiql:
+      enabled: true
+    cors:
+      allowed-methods: true
+      allowed-headers: true
+      allowed-origins: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 481650798806-rkf5gl4ji59kp2cunr1cqii5kuofh8u4.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope:
+              - openid
+              - email
+              - profile
+  rabbitmq:
+    host: localhost
+    username: user
+    password: password
+    port: 5672
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/AuthServices
+    username: postgres
+    password: Telefon310
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+jwt:
+  secretKey: ${PASSWORD}

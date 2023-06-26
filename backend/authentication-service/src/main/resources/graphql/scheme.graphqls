@@ -1,0 +1,31 @@
+type Query{
+    authenticate(authenticationRequest:AuthenticationRequest) : String
+    getAllAuth: [Auth]
+}
+
+type Mutation {
+    register(registerRequest: RegisterRequest) : Auth
+}
+
+type Auth{
+    id: ID
+    email: String
+    password: String
+    role:ERole
+}
+
+enum ERole{
+    ADMIN
+    USER
+}
+
+input RegisterRequest{
+    email: String
+    password: String
+
+}
+
+input AuthenticationRequest{
+    email: String
+    password: String
+}
