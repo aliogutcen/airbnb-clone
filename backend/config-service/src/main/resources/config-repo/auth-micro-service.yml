@@ -11,18 +11,6 @@ spring:
       allowed-methods: true
       allowed-headers: true
       allowed-origins: true
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: 481650798806-rkf5gl4ji59kp2cunr1cqii5kuofh8u4.apps.googleusercontent.com
-            client-secret: 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
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
-            scope:
-              - openid
-              - email
-              - profile
   rabbitmq:
     host: localhost
     username: user

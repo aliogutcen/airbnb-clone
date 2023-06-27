@@ -9,6 +9,7 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -21,6 +22,7 @@ public class AuthController {
     private final AuthService authService;
 
     @MutationMapping
+    @CrossOrigin("*")
     public Boolean register(@Argument @Valid RegisterRequest registerRequest) {
         authService.register(registerRequest);
         return true;
@@ -32,6 +34,7 @@ public class AuthController {
     }
 
     @QueryMapping
+    @CrossOrigin("*")
     List<Auth> getAllAuth(){
         return authService.getAllAuth();
     }

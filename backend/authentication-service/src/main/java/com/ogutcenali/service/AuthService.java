@@ -7,6 +7,8 @@ import com.ogutcenali.exception.AuthException;
 import com.ogutcenali.exception.EErrorType;
 import com.ogutcenali.model.Auth;
 import com.ogutcenali.model.enums.ERole;
+import com.ogutcenali.rabbitmq.model.CreateCustomer;
+import com.ogutcenali.rabbitmq.producer.AuthProducer;
 import com.ogutcenali.repository.IAuthRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,11 +26,14 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
-    public AuthService(IAuthRepository authRepository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JwtService jwtService) {
+    private final AuthProducer authProducer;
+
+    public AuthService(IAuthRepository authRepository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JwtService jwtService, AuthProducer authProducer) {
         this.authRepository = authRepository;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.jwtService = jwtService;
+        this.authProducer = authProducer;
     }
 
     @Transactional
@@ -45,6 +50,14 @@ public class AuthService {
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .build();
         authRepository.save(auth);
+        producerCustomerCreate(auth);
+    }
+
+    private void producerCustomerCreate(Auth auth) {
+        authProducer.createCustomer(CreateCustomer.builder()
+                .authId(auth.getId())
+                .email(auth.getEmail())
+                .build());
     }
 
     private void checkUserExists(String email) {

@@ -1,0 +1,28 @@
+type Query{
+    getCustomerById(id:ID!):Customer
+}
+
+type Mutation{
+    updateCustomerProfile(updateProfileRequest: UpdateProfileRequest):Customer
+}
+
+
+type Customer{
+
+    id:ID
+    firstName:String
+    lastName:String
+    phoneNumber:String
+    governmentId:String
+    nationality:String
+
+}
+
+input UpdateProfileRequest{
+    id: ID!
+    firstName: String
+    lastName: String
+    phoneNumber: String
+    governmentId: String
+    nationality: String
+}

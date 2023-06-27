@@ -7,11 +7,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AuthProducer {
+public class CustomerProducer {
 
-    private final RabbitTemplate rabbitTemplate;
-
-    public void createCustomer(CreateCustomer customer) {
-        rabbitTemplate.convertAndSend("exchange-auth-customer", "key-auth-customer", customer);
-    }
 }

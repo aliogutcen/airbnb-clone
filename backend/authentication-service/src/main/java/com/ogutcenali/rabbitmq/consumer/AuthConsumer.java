@@ -1,2 +1,4 @@
-package com.ogutcenali.rabbitmq.consumer;public class AuthConsumer {
+package com.ogutcenali.rabbitmq.consumer;
+
+public class AuthConsumer {
 }

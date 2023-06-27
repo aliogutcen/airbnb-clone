@@ -4,7 +4,7 @@ type Query{
 }
 
 type Mutation {
-    register(registerRequest: RegisterRequest) : Auth
+    register(registerRequest: RegisterRequest) : Boolean
 }
 
 type Auth{
