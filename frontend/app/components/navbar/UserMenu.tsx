@@ -5,20 +5,29 @@ import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
+import useRentModal from "@/app/hooks/useRentModal";
 const UserMenu = () => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+  const rentModal = useRentModal();
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
+
+  const onRent = useCallback(() => {
+    if (!isLoggedIn) {
+      loginModal.onOpen();
+    }
+    rentModal.onOpen();
+  }, [rentModal]);
 
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          onClick={() => {}}
+          onClick={onRent}
           className="
             hidden
             md:block
@@ -75,10 +84,22 @@ const UserMenu = () => {
       "
         >
           <div className="flex flex-col cursor-pointer">
-            <>
-              <MenuItem onClick={loginModal.onOpen} label="Login" />
-              <MenuItem onClick={registerModal.onOpen} label="Sign up" />
-            </>
+            {isLoggedIn ? (
+              <>
+                <MenuItem onClick={loginModal.onOpen} label="My trips" />
+                <MenuItem onClick={loginModal.onOpen} label="My favorites" />
+                <MenuItem onClick={loginModal.onOpen} label="My reservations" />
+                <MenuItem onClick={loginModal.onOpen} label="My properties" />
+                <MenuItem onClick={onRent} label="Airbnb my home" />
+                <hr />
+                <MenuItem onClick={loginModal.onOpen} label="Logout" />
+              </>
+            ) : (
+              <>
+                <MenuItem onClick={loginModal.onOpen} label="Login" />
+                <MenuItem onClick={registerModal.onOpen} label="Sign up" />
+              </>
+            )}
           </div>
         </div>
       )}

@@ -62,6 +62,7 @@ const LoginModal = () => {
           toast.success("Logged in");
           localStorage.setItem("token", token);
           loginModal.onClose();
+          window.location.reload();
         } else {
           toast.error("Invalid credentials");
         }
