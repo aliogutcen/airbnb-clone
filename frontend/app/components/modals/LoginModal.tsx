@@ -86,7 +86,7 @@ const LoginModal = () => {
       <Input
         id="email"
         label="Email"
-        disable={isLoading}
+        disabled={isLoading}
         register={register}
         errors={errors}
         required
@@ -95,7 +95,7 @@ const LoginModal = () => {
         id="password"
         type="password"
         label="Password"
-        disable={isLoading}
+        disabled={isLoading}
         register={register}
         errors={errors}
         required

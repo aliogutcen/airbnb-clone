@@ -1,0 +1,32 @@
+server:
+  port: 8082
+spring:
+  graphql:
+    schema:
+      printer:
+        enabled: true
+    graphiql:
+      enabled: true
+    cors:
+      allowed-methods: true
+      allowed-headers: true
+      allowed-origins: true
+  rabbitmq:
+    host: localhost
+    username: user
+    password: password
+    port: 5672
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/InventoryDb
+    username: postgres
+    password: Telefon310
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+jwt:
+  secretKey: ${PASSWORD}
