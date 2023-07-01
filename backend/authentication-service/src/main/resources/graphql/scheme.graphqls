@@ -5,6 +5,7 @@ type Query{
 
 type Mutation {
     register(registerRequest: RegisterRequest) : Boolean
+    updateAuth(updateAuthRequest: UpdateAuthRequest) : Boolean
 }
 
 type Auth{
@@ -28,4 +29,10 @@ input RegisterRequest{
 input AuthenticationRequest{
     email: String
     password: String
+}
+
+input UpdateAuthRequest{
+    email: String
+    password: String
+    id:ID
 }

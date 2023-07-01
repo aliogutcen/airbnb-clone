@@ -17,6 +17,8 @@ import { ST } from "next/dist/shared/lib/utils";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+
+
 enum STEPS {
   CATEGORY = 0,
   LOCATION = 1,

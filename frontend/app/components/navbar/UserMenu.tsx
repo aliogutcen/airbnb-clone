@@ -6,6 +6,7 @@ import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useRentModal from "@/app/hooks/useRentModal";
+import Link from "next/link";
 const UserMenu = () => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
@@ -22,6 +23,8 @@ const UserMenu = () => {
     }
     rentModal.onOpen();
   }, [rentModal]);
+
+  const accountpage = <Link href="/about">Letsgo</Link>;
 
   return (
     <div className="relative">
@@ -90,6 +93,8 @@ const UserMenu = () => {
                 <MenuItem onClick={loginModal.onOpen} label="My favorites" />
                 <MenuItem onClick={loginModal.onOpen} label="My reservations" />
                 <MenuItem onClick={loginModal.onOpen} label="My properties" />
+                <hr />
+                <Link href="/about">Account</Link>
                 <MenuItem onClick={onRent} label="Airbnb my home" />
                 <hr />
                 <MenuItem onClick={loginModal.onOpen} label="Logout" />
