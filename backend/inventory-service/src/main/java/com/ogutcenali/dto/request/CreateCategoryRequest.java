@@ -9,5 +9,5 @@ import lombok.*;
 @ToString
 public class CreateCategoryRequest {
 
-
+    private String categoryName;
 }

@@ -1,21 +1,13 @@
-package com.ogutcenali.model;
+package com.ogutcenali.dto.request;
 
 import lombok.*;
-
-import javax.persistence.*;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Entity
-@Table(name = "tbl_inventory")
-public class Inventory {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class CreateInventory {
 
     private Long authId;
     private Long categoryId;
