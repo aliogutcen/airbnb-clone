@@ -33,6 +33,9 @@ public class Auth implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private ERole role;
+    private String secret;
+
+    private boolean twoFactory;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

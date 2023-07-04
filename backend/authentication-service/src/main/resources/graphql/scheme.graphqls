@@ -1,6 +1,7 @@
 type Query{
-    authenticate(authenticationRequest:AuthenticationRequest) : String
+    authenticate(authenticationRequest:AuthenticationRequest) : AuthResponse
     getAllAuth: [Auth]
+    verifyCode(verifyCodeRequest:VerifyCodeRequest):Boolean
 }
 
 type Mutation {
@@ -35,4 +36,13 @@ input UpdateAuthRequest{
     email: String
     password: String
     id:ID
+}
+
+input VerifyCodeRequest{
+    code: String
+}
+
+type AuthResponse{
+    token:String
+    code:String
 }

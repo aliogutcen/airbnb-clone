@@ -67,9 +67,7 @@ const LoginModal = () => {
           toast.error("Invalid credentials");
         }
       })
-      .catch((error) => {
-        toast.error(error.response.data.errors[0].message);
-      })
+      .catch((error) => {})
       .finally(() => {
         setIsLoading(false);
       });

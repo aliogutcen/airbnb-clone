@@ -1,6 +1,6 @@
 
 type Mutation {
-    createCategory(createCategoryRequest:CreateCategoryRequest) : Boolean
+    createCategory(createCategoryRequest:CreateCategoryRequest) : String
 }
 
 input CreateCategoryRequest{
